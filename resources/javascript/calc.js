@@ -47,4 +47,22 @@ let operate = function(num1, operator, num2) {
     };
 };
 
-console.log(operate(5, '/', 7));
+// assigning html elements
+const n7 = document.getElementsByClassName('number7');
+const n8 = document.getElementsByClassName('number8');
+const n9 = document.getElementsByClassName('number9');
+const div = document.getElementsByClassName('operator-d');
+const n4 = document.getElementsByClassName('number4');
+const n5 = document.getElementsByClassName('number5');
+const n6 = document.getElementsByClassName('number6');
+const multi = document.getElementsByClassName('operator-m');
+const n1 = document.getElementsByClassName('number1');
+const n2 = document.getElementsByClassName('number2');
+const n3 = document.getElementsByClassName('number3');
+const sub = document.getElementsByClassName('operator-s');
+const n0 = document.getElementsByClassName('number0');
+const dec = document.getElementsByClassName('decimal');
+const clear = document.getElementsByClassName('clear');
+const addi = document.getElementsByClassName('operator-a');
+const euqality = document.getElementsByClassName('equality');
+
