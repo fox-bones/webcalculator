@@ -48,21 +48,111 @@ let operate = function(num1, operator, num2) {
 };
 
 // assigning html elements
-const n7 = document.getElementsByClassName('number7');
-const n8 = document.getElementsByClassName('number8');
-const n9 = document.getElementsByClassName('number9');
-const div = document.getElementsByClassName('operator-d');
-const n4 = document.getElementsByClassName('number4');
-const n5 = document.getElementsByClassName('number5');
-const n6 = document.getElementsByClassName('number6');
-const multi = document.getElementsByClassName('operator-m');
-const n1 = document.getElementsByClassName('number1');
-const n2 = document.getElementsByClassName('number2');
-const n3 = document.getElementsByClassName('number3');
-const sub = document.getElementsByClassName('operator-s');
-const n0 = document.getElementsByClassName('number0');
-const dec = document.getElementsByClassName('decimal');
-const clear = document.getElementsByClassName('clear');
-const addi = document.getElementsByClassName('operator-a');
-const euqality = document.getElementsByClassName('equality');
+const screen = document.querySelector('#screen');
+const equation = document.createElement('h3');
+equation.setAttribute('id', 'equation');
+equation.textContent = '';
+screen.appendChild(equation);
 
+//button clicks fill screen with respective numbers -line 58 to 152
+const n7 = document.querySelector('#number7');
+n7.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '7';
+    };
+});
+const n8 = document.querySelector('#number8');
+n8.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '8';
+    };
+});
+const n9 = document.querySelector('#number9');
+n9.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '9';
+    };
+});
+const div = document.querySelector('#operator-d');
+div.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += ' / ';
+    };
+});
+const n4 = document.querySelector('#number4');
+n4.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '4';
+    };
+});
+const n5 = document.querySelector('#number5');
+n5.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '5';
+    };
+});
+const n6 = document.querySelector('#number6');
+n6.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '6';
+    };
+});
+const mult = document.querySelector('#operator-m');
+mult.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += ' * ';
+    };
+});
+const n1 = document.querySelector('#number1');
+n1.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '1';
+    };
+});
+const n2 = document.querySelector('#number2');
+n2.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '2';
+    };
+});
+const n3 = document.querySelector('#number3');
+n3.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '3';
+    };
+});
+const sub = document.querySelector('#operator-s');
+sub.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += ' - ';
+    };
+});
+const n0 = document.querySelector('#number0');
+n0.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '0';
+    };
+});
+const dec = document.querySelector('#decimal');
+dec.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += '.';
+    };
+});
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', function() {
+    equation.textContent = '';
+});
+const addi = document.querySelector('#operator-a');
+addi.addEventListener('click', function() {
+    if (document.getElementById('equation').innerText.length < 27) {
+        equation.textContent += ' + ';
+    };
+});
+
+/* const button = document.querySelectorAll('.button');
+button.forEach(but => {
+    but.addEventListener('click', function(e) {
+        console.log(e.target);
+    });
+});
