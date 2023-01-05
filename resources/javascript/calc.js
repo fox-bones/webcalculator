@@ -1,50 +1,15 @@
-let add = function(array) {
-    let solution = array[0];
-    for (let i = 1; i < array.length; i++) {
-        solution += array[i];
-    };
-    return solution;
+// equations!!
+const addition = function(num1, num2) {
+    return +num1 + +num2;
 };
-
-let subtract = function(array) {
-    let solution = array[0];
-    for (let i = 1; i < array.length; i++) {
-        solution -= array[i];
-    };
-    return solution;
+const subtraction = function(num1, num2) {
+    return +num1 - +num2;
 };
-
-let multiply = function(array) {
-    let solution = array[0];
-    for (let i = 1; i < array.length; i++) {
-        solution *= array[i];
-    };
-    return solution;
+const multiplication = function(num1, num2) {
+    return +num1 * +num2;
 };
-
-let divide = function(array) {
-    let solution = array[0];
-    for (let i = 1; i < array.length; i++) {
-        if ( array[i] === 0 ) {
-            solution = 0;
-        } else {
-            solution /= array[i];
-        };
-    };
-    return solution;
-};
-
-let operate = function(num1, operator, num2) {
-    switch(operator) {
-        case '-':
-            return subtract([num1, num2]);
-        case '+':
-            return add([num1, num2]);
-        case '*':
-            return multiply([num1, num2]);
-        case '/':
-            return divide([num1, num2]);
-    };
+const division = function(num1, num2) {
+    return +num1 / +num2;
 };
 
 // assigning html elements
@@ -54,22 +19,37 @@ equation.setAttribute('id', 'equation');
 equation.textContent = '';
 screen.appendChild(equation);
 let displayValue = '';
+let activeOperator = '';
 
-//button clicks fill screen with respective numbers
+//button clicks fill screen with respective numbers then store them to displyValue
 const button = document.querySelectorAll('.button');
 button.forEach(but => {
     but.addEventListener('click', function(e) {
-        const numerals = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'];
+        const numerals = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'];
         const operators = ['+', '-', '/', '*'];
         if (equation.textContent.length < 11 && numerals.includes(e.target.textContent.trim())) {
             equation.textContent += e.target.textContent.trim();
         } else if (e.target.textContent.trim() === 'C') {
             equation.textContent = '';
-            displayValue = 0;
+            displayValue = '';
         } else if (operators.includes(e.target.textContent.trim())) {
-            displayValue += equation.textContent + e.target.textContent.trim();
+            displayValue += equation.textContent;
+            activeOperator = e.target.textContent.trim();
             equation.textContent = '';
-            console.log(displayValue);
-        }
+        } else if (e.target.textContent.trim() === '=') {
+            if (activeOperator === '+') {
+                equation.textContent = addition(displayValue, equation.textContent);
+                displayValue = '';
+            } else if (activeOperator === '-') {
+                equation.textContent = subtraction(displayValue, equation.textContent);
+                displayValue= '';
+            } else if (activeOperator === '*') {
+                equation.textContent = multiplication(displayValue, equation.textContent);
+                displayValue = '';
+            } else if (activeOperator === '/') {
+                equation.textContent = division(displayValue, equation.textContent);
+                displayValue = '';
+            };
+        };
     });
 });
