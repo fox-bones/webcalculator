@@ -29,14 +29,17 @@ button.forEach(but => {
         const operators = ['+', '-', '/', '*'];
         if (equation.textContent.length < 11 && numerals.includes(e.target.textContent.trim())) {
             equation.textContent += e.target.textContent.trim();
-        } else if (e.target.textContent.trim() === 'C') {
+        } 
+        if (e.target.textContent.trim() === 'C') {
             equation.textContent = '';
             displayValue = '';
-        } else if (operators.includes(e.target.textContent.trim())) {
+        } 
+        if (operators.includes(e.target.textContent.trim())) {
             displayValue += equation.textContent;
             activeOperator = e.target.textContent.trim();
             equation.textContent = '';
-        } else if (e.target.textContent.trim() === '=') {
+        } 
+        if (e.target.textContent.trim() === '=') {
             if (activeOperator === '+') {
                 equation.textContent = addition(displayValue, equation.textContent);
                 displayValue = '';
