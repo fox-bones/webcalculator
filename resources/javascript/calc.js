@@ -14,11 +14,11 @@ const division = function(num1, num2) {
 
 // assigning html elements
 const screen = document.querySelector('#screen');
-const equation = document.createElement('h3');
-equation.setAttribute('id', 'equation');
-equation.textContent = '';
-screen.appendChild(equation);
-let displayValue = '';
+const display = document.createElement('h3');
+display.setAttribute('id', 'display');
+display.textContent = '';
+screen.appendChild(display);
+let equation;
 let activeOperator = '';
 
 //button clicks fill screen with respective numbers then store them to displyValue
@@ -27,31 +27,49 @@ button.forEach(but => {
     but.addEventListener('click', function(e) {
         const numerals = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'];
         const operators = ['+', '-', '/', '*'];
-        if (equation.textContent.length < 11 && numerals.includes(e.target.textContent.trim())) {
-            equation.textContent += e.target.textContent.trim();
+        if (display.textContent.length < 11 && numerals.includes(e.target.textContent.trim())) {
+            display.textContent += e.target.textContent.trim();
         } 
         if (e.target.textContent.trim() === 'C') {
-            equation.textContent = '';
-            displayValue = '';
+            display.textContent = '';
+            equation = 0;
         } 
         if (operators.includes(e.target.textContent.trim())) {
-            displayValue += equation.textContent;
+            equation = +display.textContent;
             activeOperator = e.target.textContent.trim();
-            equation.textContent = '';
-        } 
+            display.textContent = '';
+        }
+        if (operators.includes(e.target.textContent.trim()) && equation === true) {
+            equation = +display.textContent;
+            activeOperator = e.target.textContent.trim();
+            display.textContent = '';
+            if (activeOperator === '+') {
+                display.textContent = addition(equation, display.textContent);
+                equation = 0;
+            } else if (activeOperator === '-') {
+                display.textContent = subtraction(equation, display.textContent);
+                equation = 0;
+            } else if (activeOperator === '*') {
+                display.textContent = multiplication(equation, display.textContent);
+                equation = 0;
+            } else if (activeOperator === '/') {
+                display.textContent = division(equation, display.textContent);
+                equation = 0;
+            };
+        }
         if (e.target.textContent.trim() === '=') {
             if (activeOperator === '+') {
-                equation.textContent = addition(displayValue, equation.textContent);
-                displayValue = '';
+                display.textContent = addition(equation, display.textContent);
+                equation = 0;
             } else if (activeOperator === '-') {
-                equation.textContent = subtraction(displayValue, equation.textContent);
-                displayValue= '';
+                display.textContent = subtraction(equation, display.textContent);
+                equation = 0;
             } else if (activeOperator === '*') {
-                equation.textContent = multiplication(displayValue, equation.textContent);
-                displayValue = '';
+                display.textContent = multiplication(equation, display.textContent);
+                equation = 0;
             } else if (activeOperator === '/') {
-                equation.textContent = division(displayValue, equation.textContent);
-                displayValue = '';
+                display.textContent = division(equation, display.textContent);
+                equation = 0;
             };
         };
     });
