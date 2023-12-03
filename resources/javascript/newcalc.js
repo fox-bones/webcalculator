@@ -1,6 +1,7 @@
 const button = document.querySelectorAll('.button')
 const screen = document.querySelector('#screen')
 const display = document.createElement('h3')
+display.style.fontFamily = "Orbitron,sans-serif"
 display.setAttribute('id', 'display')
 display.textContent = ''
 screen.appendChild(display)
@@ -8,46 +9,45 @@ let storedNumbers = []
 let operatorPresence = false
 let activeOperator = ''
 
-// basic equations - used when an operator is pressed
+// basic equations used on operators below
 let addition = function(array) {
     let solution = array[0]
     for (let i = 1; i < array.length; i++) {
         solution += array[i]
     }
-    return solution
+    return +solution.toFixed(3)
 }
 let subtraction = function(array) {
     let solution = array[0]
     for (let i = 1; i < array.length; i++) {
         solution -= array[i]
     }
-    return solution
+    return +solution.toFixed(3)
 }
 let division = function(array) {
     let solution = array[0]
     for (let i = 1; i < array.length; i++) {
         solution /= array[i]
     }
-    return solution
+    return +solution.toFixed(3)
 }
 let multiplication = function(array) {
     let solution = array[0]
     for (let i = 1; i < array.length; i++) {
         solution *= array[i]
     }
-    return solution
+    return +solution.toFixed(3)
 }
 
-//fills screen with button clicks, clears screen with C
 button.forEach(but => {
     but.addEventListener('click', function(e) {
         const numerals = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.']
-        const operators = ['+', '-', '/', '*']
+        const operators = ['+', '-', '/', '*', '=']
         //fills screen when a numeral is selected if the number of characters aren't stretching the screen
-        if (display.textContent.length < 11 && numerals.includes(e.target.textContent.trim())) {
+        if (display.textContent.length < 8 && numerals.includes(e.target.textContent.trim())) {
             display.textContent += e.target.textContent.trim()
         }
-        if (display.textContent.length < 11 && numerals.includes(e.target.textContent.trim()) && operatorPresence === true) {
+        if (display.textContent.length < 8 && numerals.includes(e.target.textContent.trim()) && operatorPresence === true) {
             display.textContent = ''
             display.textContent += e.target.textContent.trim()
             operatorPresence = false
@@ -58,8 +58,8 @@ button.forEach(but => {
             operatorPresence = false
             activeOperator = ''
         }
-
-        if (operators.includes(e.target.textContent.trim()) && display.textContent != false) {
+        //storing numbers to the storedNumbers array when an operator is chosen
+        if (operators.includes(e.target.textContent.trim()) && display.textContent != false && activeOperator != '=') {
             storedNumbers.push(Number(display.textContent))
             console.log(storedNumbers)
             console.log(activeOperator)
@@ -133,6 +133,23 @@ button.forEach(but => {
                 storedNumbers = [multiplication(storedNumbers)]
             }
             activeOperator = '*'
+        }
+        //when pressing equal sign at the end of an equation 
+        if (e.target.textContent.trim() === '=' && display.textContent != false) {
+            if (activeOperator === '+') {
+                display.textContent = addition(storedNumbers)
+                storedNumbers = [Number(display.textContent)]
+            } else if (activeOperator === '-') {
+                display.textContent = subtraction(storedNumbers)
+                storedNumbers = [subtraction(storedNumbers)]
+            } else if (activeOperator === '/') {
+                display.textContent = division(storedNumbers)
+                storedNumbers = [division(storedNumbers)]
+            } else if (activeOperator === '*') {
+                display.textContent = multiplication(storedNumbers)
+                storedNumbers = [multiplication(storedNumbers)]
+            }
+            activeOperator = '='
         }
     })
 })

@@ -16,7 +16,7 @@ main {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: #FFFDD0;
+    background-color: #8dacb8;
 }
 
 .calculator-housing {
@@ -24,9 +24,9 @@ main {
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-    background-color: skyblue;
-    width: 325px;
-    height: 490px;
+    background-color: #87ceeb;
+    width: 340px;
+    height: 540px;
     border-radius: 3px;
     box-shadow: 0px 15px rgb(92, 192, 231), 0px 25px 10px 8px rgba(0, 0, 0, 0.144);
 }
@@ -44,7 +44,6 @@ main {
     align-items: center;
     width: 100%;
     height: 75px;
-    background-color: rgb(204, 33, 33);
     margin-bottom: 10px;
     border-radius: 3px;
     padding-bottom: 2px;
@@ -57,11 +56,10 @@ main {
     align-content: flex-end;
     flex-wrap: wrap;
     height: 65px;
-    width: 97%;
+    width: 100%;
     background-color: white;
-    border: 1px solid black;
+    border: 5px inset black;
     border-radius: 3px;
-    box-shadow: 0px 3px rgb(37, 37, 37), -1px 3px rgb(37, 37, 37);
 }
 
 #screen h3 {
@@ -91,6 +89,7 @@ main {
     background-color: white;
     border-radius: 3px;
     box-shadow: 0px 3px rgb(37, 37, 37), -1px 3px rgb(37, 37, 37);
+    font-family: "Orbitron", sans-serif;
 }
 
 .button:hover {
@@ -120,8 +119,37 @@ main {
     align-items: center;
     width: 97%;
     height: 40px;
-    background-color: green;
+    background-color: #6E7E85;
     color: white;
     border-radius: 3px;
     box-shadow: 0px 3px rgb(0, 75, 0), -1px 3px rgb(0, 75, 0);
+}
+
+.solar-panel {
+    width: 140px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.695);
+    margin-left: auto;
+    margin-right: 20px;
+    border: 5px inset black;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.logo {
+    display: inline-block;
+    margin-left: 22px;
+}  
+
+.logo h3 {
+    margin: 0;
+    font-family: "Great Vibes", sans-serif;
+}
+
+.logo p {
+    margin: 0;
+    font-family: "Italianno", sans-serif;
+    text-align: center;
 }
